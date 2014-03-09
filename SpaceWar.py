@@ -30,8 +30,8 @@ FONT_SIZE = 48
 basicFont = pygame.font.SysFont(None, FONT_SIZE)
 
 # set up movement variables
-moveLeft = False
-moveRight = False
+turnCCW = False
+turnCW = False
 
 # set up other objects (sprites)
 ship.SetupShip(pygame)
@@ -48,29 +48,35 @@ while (True):
         if event.type == KEYDOWN:
             # change the keyboard variables
             if event.key == K_LEFT or event.key == ord('a'):
-                moveRight = False
-                moveLeft = True
+                turnCW = False
+                turnCCW = True
             if event.key == K_RIGHT or event.key == ord('d'):
-                moveLeft = False
-                moveRight = True
+                turnCCW = False
+                turnCW = True
 
         if event.type == KEYUP:
             if event.key == K_ESCAPE:
                 pygame.quit()
                 sys.exit()
             if event.key == K_LEFT or event.key == ord('a'):
-                moveLeft = False
+                turnCCW = False
             if event.key == K_RIGHT or event.key == ord('d'):
-                moveRight = False
+                turnCW = False
+
+    if (turnCCW):
+        ship.RotateShipCCW()
+    elif turnCW:
+        ship.RotateShipCW()
 
     # draw the black background onto the surface
-    windowSurface.fill(BLACK)
+    # TODO - not needed?
+    #windowSurface.fill(BLACK)
 
     # draw background
     space.DrawSpace(windowSurface)
 
     # draw ship
-    ship.DrawShip(windowSurface)
+    ship.DrawShip(windowSurface, pygame)
 
     # draw the window onto the screen
     pygame.display.update()
