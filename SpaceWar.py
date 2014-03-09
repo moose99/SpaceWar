@@ -1,4 +1,4 @@
-# This is the main code for the spacewar game
+# This is the main code for the spacewar sample game.
 __author__ = 'Mus'
 import pygame, sys
 from pygame.locals import *
