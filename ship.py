@@ -4,19 +4,20 @@ __author__ = 'Mus'
 # need math library functions
 import math
 
-# initialize variables to hold the ships rectangle and image
+# initialize variables to hold the ships rectangle and image and sounds
 shipRect = None
 shipImage = None
+engineSound = None
 
 # ship constant vars: size, rotation amount
 SHIP_WIDTH = 30
 SHIP_HEIGHT = 30
 SHIP_ROTATION_AMOUNT = 4
-SHIP_SPEED_AMOUNT = 2
-SHIP_DRAG_AMOUNT = 0.2
-SHIP_MAX_SPEED = 10
+SHIP_SPEED_AMOUNT = .1
+SHIP_DRAG_AMOUNT = 0.005
+SHIP_MAX_SPEED = 5
 
-# init vars to hold velocity, speed, position and rotation
+# init vars to hold velocity, speed, position and rotation...
 shipRotation = 0    # goes from 0 to 360
 shipPosX = 250
 shipPosY = 250
@@ -29,8 +30,10 @@ def SetupShip(game):
     # use 'global' to indicate that we are changing the shipRect/shipImage vars declared outside the function
     global shipRect
     global shipImage
+    global engineSound
     shipRect = game.Rect(shipPosX-(SHIP_WIDTH/2), shipPosY-(SHIP_HEIGHT/2), SHIP_WIDTH, SHIP_HEIGHT)
     shipImage = game.image.load('assets/rocketship.png')
+    engineSound = game.mixer.Sound('assets/engine_2.wav')
 
 # draws the ship on the surface provided
 def DrawShip(surface, game):
@@ -39,12 +42,13 @@ def DrawShip(surface, game):
     rotatedRect = rotatedShipImage.get_rect()
     rotatedRect.center = shipRect.center    # use original image center, so always rotates around the same center
 
-    # now apply ship position (translation)
+    # now apply ship translation
     rotatedRect.center = (shipPosX, shipPosY)
 
     # now draw it on screen
     surface.blit(rotatedShipImage, rotatedRect)
 
+# change ship rotation
 def RotateShipCCW():
     global shipRotation
     shipRotation += SHIP_ROTATION_AMOUNT
@@ -52,6 +56,7 @@ def RotateShipCCW():
     if (shipRotation > 360):
         shipRotation = 360 - shipRotation
 
+# change ship rotation
 def RotateShipCW():
     global shipRotation
     shipRotation -= SHIP_ROTATION_AMOUNT
@@ -59,6 +64,7 @@ def RotateShipCW():
     if (shipRotation < 0):
         shipRotation = 360 + shipRotation
 
+# change ship speed
 def MoveShip(thruster):
     global shipSpeed
     # increase speed
@@ -104,7 +110,7 @@ def TransformShip(surface, turnCCW, turnCW, thruster):
         shipVelX = 0
         shipVelY = 0
 
-    # update position based on velocity
+    # update position based on current velocity and speed
     shipPosX += shipVelX * shipSpeed
     shipPosY += shipVelY * shipSpeed
 
