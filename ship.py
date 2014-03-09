@@ -14,8 +14,8 @@ SHIP_WIDTH = 30
 SHIP_HEIGHT = 30
 SHIP_ROTATION_AMOUNT = 4
 SHIP_SPEED_AMOUNT = .1
-SHIP_DRAG_AMOUNT = 0.005
-SHIP_MAX_SPEED = 5
+SHIP_DRAG_AMOUNT = 0.01
+SHIP_MAX_SPEED = 6
 
 # init vars to hold velocity, speed, position and rotation...
 shipRotation = 0    # goes from 0 to 360
@@ -23,7 +23,7 @@ shipPosX = 250
 shipPosY = 250
 shipVelX = 0
 shipVelY = 0
-shipSpeed = 0
+
 
 # func to create the ship
 def SetupShip(game):
@@ -64,20 +64,34 @@ def RotateShipCW():
     if (shipRotation < 0):
         shipRotation = 360 + shipRotation
 
-# change ship speed
+# change ship's velocity
 def MoveShip(thruster):
-    global shipSpeed
-    # increase speed
+    global shipVelX, shipVelY
+
+     # change velocity
     if (thruster):
-        shipSpeed += SHIP_SPEED_AMOUNT
-        # clamp speed to maximum
-        if (shipSpeed > SHIP_MAX_SPEED):
-            shipSpeed = SHIP_MAX_SPEED
-    # else decrease speed using drag
+        # find the current direction vector
+        shipDirX = math.cos(math.radians(shipRotation))
+        shipDirY = -math.sin(math.radians(shipRotation))    # flip Y
+
+        # increase velocity using current direction
+        shipVelX += shipDirX * SHIP_SPEED_AMOUNT
+        shipVelY += shipDirY * SHIP_SPEED_AMOUNT
+
+        # clamp velocity
+        length = math.sqrt(shipVelX*shipVelX + shipVelY*shipVelY)  # hypotenuse
+        if (length > SHIP_MAX_SPEED):
+            shipVelX = shipVelX * SHIP_MAX_SPEED / length
+            shipVelY = shipVelY * SHIP_MAX_SPEED / length
     else:
-        shipSpeed -= SHIP_DRAG_AMOUNT
-        if (shipSpeed < 0):
-            shipSpeed = 0
+        # decrease velocity without changing direction
+        length = math.sqrt(shipVelX*shipVelX + shipVelY*shipVelY)  # hypotenuse
+        if (length >= SHIP_DRAG_AMOUNT ):
+            shipVelX = shipVelX * (length-SHIP_DRAG_AMOUNT) / length
+            shipVelY = shipVelY * (length-SHIP_DRAG_AMOUNT) / length
+        else:
+            shipVelX = 0
+            shipVelY = 0
 
 def TransformShip(surface, turnCCW, turnCW, thruster):
     # we'll be changing these globals
@@ -91,28 +105,9 @@ def TransformShip(surface, turnCCW, turnCW, thruster):
     # handle translation
     MoveShip(thruster)
 
-    # change velocity
-    if (thruster):
-        # find the current direction vector
-        shipDirX = math.cos(math.radians(shipRotation))
-        shipDirY = -math.sin(math.radians(shipRotation))    # flip Y
-
-        # change velocity using current direction
-        shipVelX += shipDirX
-        shipVelY += shipDirY
-
-    # normalize velocity
-    length = math.sqrt(shipVelX*shipVelX + shipVelY*shipVelY)  # hypotenuse
-    if (length > 0):
-        shipVelX /= length
-        shipVelY /= length
-    else:
-        shipVelX = 0
-        shipVelY = 0
-
     # update position based on current velocity and speed
-    shipPosX += shipVelX * shipSpeed
-    shipPosY += shipVelY * shipSpeed
+    shipPosX += shipVelX
+    shipPosY += shipVelY
 
     # wrap position
     if (shipPosX >= surface.get_width()):
