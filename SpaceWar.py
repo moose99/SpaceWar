@@ -32,6 +32,7 @@ basicFont = pygame.font.SysFont(None, FONT_SIZE)
 # set up movement variables
 turnCCW = False
 turnCW = False
+thruster = False
 
 # set up other objects (sprites)
 ship.SetupShip(pygame)
@@ -53,6 +54,8 @@ while (True):
             if event.key == K_RIGHT or event.key == ord('d'):
                 turnCCW = False
                 turnCW = True
+            if event.key == K_UP or event.key == ord('s'):
+                thruster = True
 
         if event.type == KEYUP:
             if event.key == K_ESCAPE:
@@ -62,11 +65,11 @@ while (True):
                 turnCCW = False
             if event.key == K_RIGHT or event.key == ord('d'):
                 turnCW = False
+            if event.key == K_UP or event.key == ord('s'):
+                thruster = False
 
-    if (turnCCW):
-        ship.RotateShipCCW()
-    elif turnCW:
-        ship.RotateShipCW()
+    # send motion variables to ship, so it can turn or move
+    ship.TransformShip(windowSurface, turnCCW, turnCW, thruster)
 
     # draw the black background onto the surface
     # TODO - not needed?

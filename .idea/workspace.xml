@@ -26,10 +26,19 @@
       <file leaf-file-name="SpaceWar.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SpaceWar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="0" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0" vertical-offset="822" max-vertical-offset="1530">
+            <state line="71" column="38" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0" vertical-offset="981" max-vertical-offset="1581">
               <folding>
                 <element signature="e#73#91#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ship.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ship.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="22" selection-start="340" selection-end="340" vertical-scroll-proportion="0.4177449" vertical-offset="29" max-vertical-offset="2142">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -38,15 +47,6 @@
         <entry file="file://$PROJECT_DIR$/space.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="17" column="23" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ship.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ship.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="20" selection-start="550" selection-end="550" vertical-scroll-proportion="0.31416836" vertical-offset="204" max-vertical-offset="935">
               <folding />
             </state>
           </provider>
@@ -359,7 +359,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39947438" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.325887" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25492772" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -388,7 +388,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/ship.py</url>
-          <line>29</line>
+          <line>37</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -459,7 +459,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SpaceWar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0" vertical-offset="822" max-vertical-offset="1530">
+        <state line="71" column="38" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0" vertical-offset="981" max-vertical-offset="1581">
           <folding>
             <element signature="e#73#91#0" expanded="true" />
           </folding>
@@ -468,7 +468,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ship.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="20" selection-start="550" selection-end="550" vertical-scroll-proportion="0.31416836" vertical-offset="204" max-vertical-offset="935">
+        <state line="15" column="22" selection-start="340" selection-end="340" vertical-scroll-proportion="0.4177449" vertical-offset="29" max-vertical-offset="2142">
           <folding />
         </state>
       </provider>
