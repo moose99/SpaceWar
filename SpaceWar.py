@@ -38,6 +38,7 @@ thruster = False
 # set up other objects (sprites)
 ship.SetupShip(pygame)
 space.SetupSpace(pygame)
+bullet.SetupBullet(pygame)
 
 # run game loop
 while (True):
@@ -59,7 +60,9 @@ while (True):
                 turnCW = True
             if event.key == K_UP or event.key == ord('s'):
                 thruster = True
-                ship.engineSound.play()
+                ship.engineSound.play(-1)
+            if event.key == K_RETURN:
+                bullet.FireBullet(pygame, ship.shipPosX, ship.shipPosY, ship.shipRotation)
 
         if event.type == KEYUP:
             if event.key == K_LEFT or event.key == ord('a'):
@@ -78,6 +81,9 @@ while (True):
 
     # draw ship
     ship.DrawShip(windowSurface, pygame)
+
+    # draw bullets
+    bullet.DrawBullet(windowSurface)
 
     # draw the window onto the screen
     pygame.display.update()
