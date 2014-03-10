@@ -58,7 +58,7 @@ while (True):
             if event.key == K_RIGHT or event.key == ord('d'):
                 turnCCW = False
                 turnCW = True
-            if event.key == K_UP or event.key == ord('s'):
+            if event.key == K_UP or event.key == ord('w'):
                 thruster = True
                 ship.engineSound.play(-1)
             if event.key == K_RETURN:
@@ -69,7 +69,7 @@ while (True):
                 turnCCW = False
             if event.key == K_RIGHT or event.key == ord('d'):
                 turnCW = False
-            if event.key == K_UP or event.key == ord('s'):
+            if event.key == K_UP or event.key == ord('w'):
                 thruster = False
                 ship.engineSound.stop()
 
